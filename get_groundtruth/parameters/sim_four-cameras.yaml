@@ -1,0 +1,56 @@
+cam0:
+  T_c_b:  (body to cam0):
+  - [1.0, 0.0, 0.0, 0.0]
+  - [0.0, 1.0, 0.0, 0.0]
+  - [0.0, 0.0, 1.0, 0.0]
+  - [0.0, 0.0, 0.0, 1.0]
+  cam_overlaps: []
+  camera_model: pinhole
+  distortion_coeffs: [0.0, 0.0, 0.0, 0.0]
+  distortion_model: rad_tan
+  intrinsics: [1007.0352641079985, 1007.0352641079985, 845.5, 475.5]
+  resolution: [1690, 950]
+  rostopic: /camera_fl/image_raw
+  
+cam1:
+  T_c_b:  (body to cam1):
+  - [ 0.0,  0.0, -1.0,  -0.4]
+  - [ 0.0,  1.0,  0.0,  0.0]
+  - [ 1.0, -0.0,  0.0,  0.0]
+  - [0.0, 0.0, 0.0, 1.0]
+  cam_overlaps: []
+  camera_model: pinhole
+  distortion_coeffs: [0.0, 0.0, 0.0, 0.0]
+  distortion_model: rad_tan
+  intrinsics: [1007.0352641079985, 1007.0352641079985, 845.5, 475.5]
+  resolution: [1690, 950]
+  rostopic: /camera_fr/image_raw
+  
+cam2:
+  T_c_b:  (body to cam2):
+  - [ 0.0,  0.0,  1.0,  0.0]
+  - [ 0.0,  1.0, -0.0,  0.0]
+  - [-1.0,  0.0,  0.0,  -0.3]
+  - [0.0, 0.0, 0.0, 1.0]
+  cam_overlaps: []
+  camera_model: pinhole
+  distortion_coeffs: [0.0, 0.0, 0.0, 0.0]
+  distortion_model: rad_tan
+  intrinsics: [1007.0352641079985, 1007.0352641079985, 845.5, 475.5]
+  resolution: [1690, 950]
+  rostopic: /camera_bl/image_raw
+  
+cam3:
+  T_c_b:  (body to cam3):
+  - [-1.0,  0.0, -0.0,  -0.3]
+  - [ 0.0,  1.0,  0.0,  0.0]
+  - [ 0.0, -0.0, -1.0,  -0.4]
+  - [0.0, 0.0, 0.0, 1.0]
+  cam_overlaps: []
+  camera_model: pinhole
+  distortion_coeffs: [0.0, 0.0, 0.0, 0.0]
+  distortion_model: rad_tan
+  intrinsics: [1007.0352641079985, 1007.0352641079985, 845.5, 475.5]
+  resolution: [1690, 950]
+  rostopic: /camera_br/image_raw
+

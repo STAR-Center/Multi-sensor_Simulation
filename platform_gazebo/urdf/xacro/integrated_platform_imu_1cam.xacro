@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<robot name="multi_sensor_platform" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:property name="PI"   value="3.141592653" />
+    <xacro:include filename="$(find platform_gazebo)/urdf/xacro/platform_base.xacro"/>
+    <xacro:include filename="$(find velodyne_description)/urdf/VLP-16.urdf.xacro"/>
+    <xacro:include filename="$(find platform_gazebo)/urdf/xacro/sensors/camera_gazebo.xacro" />
+    <xacro:include filename="$(find platform_gazebo)/urdf/xacro/sensors/imu.xacro" />
+    <xacro:include filename="$(find platform_gazebo)/urdf/xacro/simple_motion_support.xacro" />
+    c
+
+    <!-- Camera -->
+    <xacro:macro name="mount_camera" params="camera_name x y z yaw">
+        <joint name="${camera_name}_joint" type="fixed">
+            <origin xyz="${x} ${y} ${z}" rpy="0 0 ${yaw}" />
+            <parent link="plat_base"/>
+            <child link="${camera_name}_link"/>
+        </joint>
+        <xacro:usb_camera prefix="${camera_name}"/>
+    </xacro:macro>
+
+    <!-- front left, front right: look forward -->
+    <xacro:mount_camera camera_name="camera_fr" x="0.103" y="0.135" z="0.09" yaw="${PI/2.0}"/>
+
+    <!-- add imu -->
+    <joint name="imu_joint" type="fixed">
+        <origin xyz="0 0.15 0.1" rpy="0 0 -${PI/2.0}" />
+        <parent link="plat_base"/>
+        <child link="imu_link"/>
+    </joint>
+    <xacro:imu />
+
+    <!-- connect the arm with the platform -->
+    <joint name="arm_plat_joint" type="fixed">
+        <origin xyz="0 0 0.1" rpy="0 0 0" />
+        <parent link="link4"/>
+        <child link="plat_base"/>
+    </joint>
+    <xacro:support_part />
+</robot>

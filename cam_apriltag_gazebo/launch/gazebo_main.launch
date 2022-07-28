@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<launch>
+    <arg name="rviz" default="true"/>
+    <arg name="robot" default="machines"/>
+    <arg name="debug" default="false"/>
+    <arg name="gui" default="true"/>
+    <arg name="headless" default="false"/>
+    <arg name="verbose" value="true" />
+    <arg name="pause" default="false"/>  <!-- Start Gazebo with a blank world -->
+    <env name="GAZEBO_MODEL_PATH" value="$(find cam_apriltag_gazebo)/models:$(optenv GAZEBO_MODEL_PATH)" />
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="world_name" value="$(find cam_apriltag_gazebo)/worlds/only_apriltag.world"/>
+        <arg name="debug" value="$(arg debug)" />
+        <arg name="gui" value="$(arg gui)" />
+        <arg name="paused" value="$(arg pause)"/>
+        <arg name="use_sim_time" value="true"/>
+        <arg name="headless" value="$(arg headless)"/>
+    </include>
+    <group >
+    <include file="$(find cam_apriltag_gazebo)/launch/spawn_platform_mover.launch"/>
+    </group>
+
+
+    <node if="$(arg rviz)" pkg="rviz" type="rviz" name="$(anon rviz)" output="screen"
+          args="-d $(find cam_apriltag_gazebo)/rviz/only_camera.rviz"/>
+    
+  <!-- 运行robot_state_publisher节点，发布tf  -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen">
+    <param name="publish_frequency" type="double" value="50.0"/>
+  </node>
+</launch>

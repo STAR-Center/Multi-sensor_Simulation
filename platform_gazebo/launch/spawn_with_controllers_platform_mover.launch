@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+    <include file="$(find platform_gazebo)/launch/spawn_platform_mover.launch"/>
+    <include file="$(find platform_gazebo)/launch/platform_mover_control.launch"/>
+</launch>

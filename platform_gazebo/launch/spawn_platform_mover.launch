@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+    <include file="$(find platform_gazebo)/launch/spawn_robot_urdf.launch">
+        <arg name="x" value="0.0" />
+        <arg name="y" value="0.0" />
+        <arg name="z" value="0.025" />
+<!--        <arg name="urdf_robot_file" value="$(find platform_gazebo)/urdf/xacro/integrated_platform_imu_1cam.xacro" />-->
+        <arg name="urdf_robot_file" value="$(find platform_gazebo)/urdf/xacro/integrated_platform_2side.xacro" />
+        <arg name="robot_name" value="multi_sensor_platform" />
+    </include>
+</launch>

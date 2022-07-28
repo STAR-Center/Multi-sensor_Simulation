@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<robot name="platform_base" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <!-- PROPERTY LIST -->
+    <xacro:property name="base_mass"   value="2" />
+    <xacro:property name="base_width"  value="0.40"/>
+    <xacro:property name="base_length" value="0.50"/>
+
+    <!-- Defining the colors  -->
+    <material name="gray">
+        <color rgba="0.75 0.75 0.75 1"/>
+    </material>
+
+    <!-- Macro for inertia matrix -->
+    <xacro:macro name="sphere_inertial_matrix" params="m r">
+        <inertial>
+            <mass value="${m}" />
+            <inertia ixx="${2*m*r*r/5}" ixy="0" ixz="0"
+                     iyy="${2*m*r*r/5}" iyz="0"
+                     izz="${2*m*r*r/5}" />
+        </inertial>
+    </xacro:macro>
+    <xacro:macro name="cylinder_inertial_matrix" params="m r h">
+        <inertial>
+            <mass value="${m}" />
+            <inertia ixx="${m*(3*r*r+h*h)/12}" ixy = "0" ixz = "0"
+                     iyy="${m*(3*r*r+h*h)/12}" iyz = "0"
+                     izz="${m*r*r/2}" />
+        </inertial>
+    </xacro:macro>
+    <xacro:macro name="inertial_matrix" params="mass">
+        <inertial>
+            <mass value="${mass}" />
+            <inertia ixx="1.0" ixy="0.0" ixz="0.0"
+                     iyy="1.0" iyz="0.0"
+                     izz="1.0" />
+        </inertial>
+    </xacro:macro>
+
+    <!-- platform base -->
+    <link name="plat_base">
+        <visual>
+            <origin xyz=" 0 0 0" rpy="0 0 0" />
+            <geometry>
+                <box size="${base_length} ${base_width} 0.02"/>
+            </geometry>
+            <material name="gray" />
+        </visual>
+        <collision>
+            <origin xyz=" 0 0 0" rpy="0 0 0" />
+            <geometry>
+                <box size="${base_length} ${base_width} 0.02"/>
+            </geometry>
+        </collision>
+        <xacro:inertial_matrix mass="${base_mass}"/>
+    </link>
+</robot>

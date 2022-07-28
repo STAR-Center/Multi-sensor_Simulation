@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<robot name="camera_in_sky" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <xacro:property name="PI"   value="3.141592653" />
+    <xacro:include filename="$(find cam_apriltag_gazebo)/urdf/xacro/camera_gazebo.xacro" />
+
+    <!-- Camera -->
+    <xacro:usb_camera prefix="camera_sky"/>
+<!--    <xacro:macro name="mount_camera" params="camera_name">
+        <joint name="${camera_name}_joint" type="fixed">
+            <origin xyz="0 0 0" rpy="0 ${PI/2.0} ${PI/2.0}" />
+            <parent link="plat_base"/>
+            <child link="${camera_name}_link"/>
+        </joint>
+    </xacro:macro>
+
+    <xacro:mount_camera camera_name="camera_sky" />-->
+
+</robot>

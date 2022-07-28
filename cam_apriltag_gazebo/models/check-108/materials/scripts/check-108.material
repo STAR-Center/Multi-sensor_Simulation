@@ -1,0 +1,17 @@
+material check-108
+{
+  technique
+  {
+    pass
+    {
+      lighting off
+      texture_unit
+      {
+        texture check-108.png
+        filtering none none none
+        scale 1.0 1.0
+      }
+    }
+  }
+}
+

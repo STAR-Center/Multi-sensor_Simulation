@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+    <include file="$(find cam_apriltag_gazebo)/launch/spawn_robot_urdf.launch">
+        <arg name="urdf_robot_file" value="$(find cam_apriltag_gazebo)/urdf/xacro/camera_in_sky.xacro" />
+        <arg name="robot_name" value="camera_in_sky" />
+    </include>
+</launch>

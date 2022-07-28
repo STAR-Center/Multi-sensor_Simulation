@@ -1,0 +1,31 @@
+<?xml version='1.0'?>
+<sdf version='1.6'>
+  <model name='Apriltag9'>
+    <link name='main'>
+    <pose frame=''>0.2925 0.2925 0 0 0 1.570796327</pose>
+      <visual name='main_Visual'>
+        <geometry>
+          <box>
+          <size>0.6638 0.6638 0.01</size>
+          </box>
+        </geometry>
+           <material>
+          <script>
+            <uri>model://Apriltag9/materials/scripts</uri>
+            <uri>model://Apriltag9/materials/textures</uri>
+            <name>Apriltag9</name>
+          </script>
+        </material>
+      </visual>
+      <collision name="surface">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <box>
+          <size>0.6638 0.6638 0.01</size>
+          </box>
+        </geometry>
+      </collision>
+     </link>
+    <static>1</static>
+  </model>
+</sdf>

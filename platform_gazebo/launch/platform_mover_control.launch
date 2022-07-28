@@ -1,0 +1,18 @@
+<launch>
+
+  <rosparam file="$(find platform_gazebo)/config/trajectory_control.yaml" command="load" ns="/multi_sensor_platform"/>
+
+  <node name="arm_controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+        output="screen" ns="/multi_sensor_platform" args="x_axis_controller y_axis_controller yaw_controller up_down_controller
+        pitch_controller roll_controller" />
+
+  <rosparam file="$(find platform_gazebo)/config/arm_gazebo_joint_states.yaml" command="load"  ns="/multi_sensor_platform" />
+  <node name="joint_controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+        output="screen" ns="/multi_sensor_platform" args="joint_state_controller" />
+        
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen">
+    <param name="publish_frequency" type="double" value="50.0"/>
+    <remap from="/joint_states" to="/multi_sensor_platform/joint_states" />
+  </node>
+
+</launch>

@@ -1,0 +1,18 @@
+lidar0:
+  rostopic: /velodyne_points_right
+  T_here_imu0: # optional initial guess, remove this filed if automatic initialization is desired
+  - [ 0.96623255, -0.        , -0.2576716 , -0.189]
+  - [0.        ,  1.        , -0.        , 0.0]
+  - [0.2576716 ,  0.        ,  0.96623255, -0.181]
+  - [0.0, 0.0, 0.0, 1.0]
+  relative_point_timestamp: True
+  reserved_points_per_frame: 500
+lidar1:
+  rostopic: /velodyne_points_left
+  T_here_imu0: # optional initial guess, remove this filed if automatic initialization is desired
+  - [ 0.96623255,  0.        ,  0.2576716 , 0.189]
+  - [ 0.        ,  1.        ,  0.        , 0.0]
+  - [-0.2576716 ,  0.        ,  0.96623255, -0.181]
+  - [0.0, 0.0, 0.0, 1.0]
+  relative_point_timestamp: True
+  reserved_points_per_frame: 500
