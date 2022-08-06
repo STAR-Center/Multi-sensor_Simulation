@@ -1,4 +1,7 @@
-#Download and Compile
+This is a ROS package to simulate multi-sensor platforms through Gazebo. Two platforms are included. One platform includes an IMU and a camera, whose model is built in `integrated_platform_imu_1cam.xacro`. The other platform includes an IMU, four cameras and two LiDARs, whose model is described in `integrated_platform_2side.xacro`.
+
+# Download and Usage
+Please install ROS and Gazebo before using this package.
 
 ```
 mkdir -p catkin_ws/src
@@ -12,3 +15,7 @@ source devel/setup.sh
 cd src/Multi-sensor_Simulation
 source sim_move_and_record.sh
 ```
+
+# Calibration
+For multi-sensor calibration, please refer to [Mutical](https://github.com/zhixy/multical), proposed by the paper "Multical: Spatiotemporal Calibration for Multiple IMUs, Cameras and LiDARs".
+We also provide [real dataset](https://robotics.shanghaitech.edu.cn/datasets/multical) to test our calibration method.
